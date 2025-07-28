@@ -3,25 +3,41 @@ package better_end_sky.mixin;
 import better_end_sky.render.CustomFogRenderer;
 import better_end_sky.util.BackgroundInfo;
 
-import net.fabricmc.loader.api.FabricLoader;
+import com.mojang.blaze3d.vertex.PoseStack;
 import net.minecraft.client.Camera;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.multiplayer.ClientLevel;
-import net.minecraft.client.renderer.FogRenderer;
+import net.minecraft.client.renderer.BackgroundRenderer;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
-import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.Entity;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.material.FogType;
-
 import org.spongepowered.asm.mixin.Mixin;
-import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
-@Mixin(FogRenderer.class)
+import net.fabricmc.loader.api.FabricLoader;
+//import net.minecraft.client.Camera;
+//import net.minecraft.client.Minecraft;
+//import net.minecraft.client.multiplayer.ClientLevel;
+//import net.minecraft.client.renderer.FogRenderer;
+//import net.minecraft.world.effect.MobEffectInstance;
+//import net.minecraft.world.effect.MobEffects;
+//import net.minecraft.world.entity.Entity;
+//import net.minecraft.world.entity.LivingEntity;
+//import net.minecraft.world.level.Level;
+//import net.minecraft.world.level.material.FogType;
+
+//import org.spongepowered.asm.mixin.Mixin;
+import org.spongepowered.asm.mixin.Shadow;
+//import org.spongepowered.asm.mixin.injection.At;
+//import org.spongepowered.asm.mixin.injection.Inject;
+//import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
+
+@Mixin(BackgroundRenderer.class)
 public abstract class FogRendererMixin {
     @Shadow
     private static float fogRed;
