@@ -1,7 +1,7 @@
 package better_end_sky.util;
 
-import net.minecraft.core.Vec3i;
-import net.minecraft.util.RandomSource;
+import net.minecraft.util.math.Vec3i
+import net.minecraft.util.random.RandomSource
 
 import java.util.Random;
 
