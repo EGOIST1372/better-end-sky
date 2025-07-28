@@ -11,9 +11,8 @@ group = project.maven_group
 repositories {}
 
 dependencies {
-    minecraft "com.mojang:minecraft:1.21.7"
-    //mappings loom.officialMojangMappings()
-    mappings "net.fabricmc:yarn:1.21.7+build.8:v2"
+    minecraft "com.mojang:minecraft:${project.minecraft_version}"
+    mappings loom.officialMojangMappings()
     modImplementation "net.fabricmc:fabric-loader:${project.fabric_loader}"
     modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_api}"
 }
