@@ -1,0 +1,41 @@
+name: Update to Minecraft 1.21.7 (Fabric) and Build
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main, master]
+  pull_request:
+
+jobs:
+  update-and-build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up JDK 21
+        uses: actions/setup-java@v4
+        with:
+          java-version: '21'
+          distribution: 'temurin'
+
+      - name: Update Minecraft and Fabric versions in gradle.properties
+        run: |
+          sed -i 's/minecraft_version=[^"]*/minecraft_version=1.21.7/g' gradle.properties
+          sed -i 's/loader_version=[^"]*/loader_version=0.16.14/g' gradle.properties
+          sed -i 's/fabric_version=[^"]*/fabric_version=0.129.0+1.21.7/g' gradle.properties
+
+      - name: Validate version update
+        run: |
+          grep 'minecraft_version=1.21.7' gradle.properties
+          grep 'loader_version=0.16.14' gradle.properties
+          grep 'fabric_version=0.129.0+1.21.7' gradle.properties
+
+      - name: Build with Gradle
+        run: ./gradlew build
+
+      - name: Upload JAR Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: HorseStatsVanilla-1.21.7-fabric
+          path: build/libs/*.jar
