@@ -3,7 +3,7 @@ name: Update to Minecraft 1.21.7 (Fabric) and Build
 on:
   workflow_dispatch:
   push:
-    branches: [1.21, master]
+    branches: [1.21]
   pull_request:
 
 jobs:
@@ -22,14 +22,14 @@ jobs:
       - name: Update Minecraft and Fabric versions in gradle.properties
         run: |
           sed -i 's/minecraft_version=[^"]*/minecraft_version=1.21.7/g' gradle.properties
-          sed -i 's/loader_version=[^"]*/loader_version=0.16.14/g' gradle.properties
-          sed -i 's/fabric_version=[^"]*/fabric_version=0.129.0+1.21.7/g' gradle.properties
+          sed -i 's/fabric_loader=[^"]*/fabric_loader=0.16.14/g' gradle.properties
+          sed -i 's/fabric_api=[^"]*/fabric_api=0.129.0+1.21.7/g' gradle.properties
 
       - name: Validate version update
         run: |
           grep 'minecraft_version=1.21.7' gradle.properties
-          grep 'loader_version=0.16.14' gradle.properties
-          grep 'fabric_version=0.129.0+1.21.7' gradle.properties
+          grep 'fabric_loader=0.16.14' gradle.properties
+          grep 'fabric_api=0.129.0+1.21.7' gradle.properties
 
       - name: Build with Gradle
         run: ./gradlew build
