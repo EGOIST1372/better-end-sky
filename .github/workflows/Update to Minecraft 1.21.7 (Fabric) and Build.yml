@@ -37,5 +37,5 @@ jobs:
       - name: Upload JAR Artifact
         uses: actions/upload-artifact@v4
         with:
-          name: better-end-sky-1.21.7
+          name: better-end-sky-v1.21.7
           path: build/libs/*.jar
