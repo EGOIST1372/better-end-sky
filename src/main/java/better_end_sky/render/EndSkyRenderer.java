@@ -3,12 +3,12 @@ package better_end_sky.render;
 import better_end_sky.Mod;
 import better_end_sky.util.BackgroundInfo;
 import better_end_sky.util.MHelper;
-import com.mojang.blaze3d.platform.GlStateManager;
+//import com.mojang.blaze3d.platform.GlStateManager;
 import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.blaze3d.vertex.*;
 import net.fabricmc.fabric.api.client.rendering.v1.DimensionRenderingRegistry;
 import net.fabricmc.fabric.api.client.rendering.v1.WorldRenderContext;
-import net.minecraft.client.renderer.FogRenderer;
+import net.minecraft.client.renderer.BackgroundRenderer;
 import net.minecraft.client.renderer.GameRenderer;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.RandomSource;
@@ -79,7 +79,7 @@ public class EndSkyRenderer implements DimensionRenderingRegistry.SkyRenderer {
         float time2 = time * 2;
         float time3 = time * 3;
 
-        FogRenderer.levelFogColor();
+        BackgroundRenderer.levelFogColor();
         RenderSystem.depthMask(false);
         RenderSystem.enableBlend();
         RenderSystem.setShaderColor(1.0f, 1.0f, 1.0f, 1.0f);
